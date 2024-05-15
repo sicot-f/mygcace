@@ -132,7 +132,16 @@ gcloud functions deploy "$CLOUD_FUNCTOIN_NAME" \
     --gen2 \
     --region="$REGION" \
     --source=. \
-    --trigger-event=providers/cloud.storage/eventTypes/object.change \
-    --trigger-resource=$BUCKET_NAME \
+    --trigger-event="providers/cloud.storage/eventTypes/object.change" \
+    --trigger-resource="$BUCKET_NAME" \
+    --stage-bucket=$BUCKET_FUNCTION_NAME \
+    --runtime nodejs20
+
+gcloud functions deploy "$CLOUD_FUNCTOIN_NAME" \
+    --gen2 \
+    --region="$REGION" \
+    --source=. \
+    --trigger-event-filters="type=providers/cloud.storage/eventTypes/object.change" \
+    --trigger-event-filters="bucket=$BUCKET_NAME" \
     --stage-bucket=$BUCKET_FUNCTION_NAME \
     --runtime nodejs20
