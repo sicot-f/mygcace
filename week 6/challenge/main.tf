@@ -14,41 +14,21 @@ provider "google" {
   zone    = var.zone
 }
 
-# resource "google_compute_instance" "tf-instance-1" {}
-# resource "google_compute_instance" "tf-instance-1" {
-#   name         = "tf-instance-1"
-#   machine_type = "e2-micro"
+# module "gcs-instances" {
+#   source = "./modules/instances"
 # 
-#   boot_disk {
-#     initialize_params {
-#       image = "debian-cloud/debian-11"
-#     }
-#   }
-# 
-#   network_interface {
-#     network = "default"
-#     access_config {
-#     }
-#   }
-#   metadata_startup_script = <<-EOT
-#         #!/bin/bash
-#     EOT
-#   allow_stopping_for_update = true
+#   zone       = var.zone
+#   project_id = var.project_id
+#   region     = var.region
 # }
-#resource "google_compute_instance" "tf-instance-2" {}
-
-# metadata_startup_script = <<-EOT
-#        #!/bin/bash
-#    EOT
-#allow_stopping_for_update = true
-
 
 # module "gcs-static-website-bucket" {
 #   source = "./modules/storage"
 # 
 #   name       = ""
+#   zone       = var.zone
 #   project_id = var.project_id
-#   location   = "REGION"
+#   region     = var.region
 # }
 # 
 # terraform {

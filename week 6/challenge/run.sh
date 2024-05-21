@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export PROJECT_ID=""
+export REGION=""
+export ZONE=""
+
 # copy variables
 cp variables.tf modules/storage/
 cp variables.tf modules/instances/
@@ -7,15 +11,13 @@ cp variables.tf modules/instances/
 # init terraform
 terraform init
 
-# $ terraform import google_compute_instance.default projects/{{project}}/zones/{{zone}}/instances/{{name}}
-# $ terraform import google_compute_instance.default {{project}}/{{zone}}/{{name}}
-# $ terraform import google_compute_instance.default {{name}}
-terraform import google_compute_instance.tf-instance-1 "tf-instance-1"
-terraform import google_compute_instance.tf-instance-2 "tf-instance-2"
+terraform import module.instances.google_compute_instance.tf-instance-1 "$PROJECT_ID/$PNE/tf-instance-1"ZO
+terraform import module.instances.google_compute_instance.tf-instance-2 "$PROJECT_ID/$ZPNE/tf-instance-2"
 
-terraform init
+terraform plan
+terraform apply
 
-
+# 3
 terraform init -migrate-state
 
 # 6
