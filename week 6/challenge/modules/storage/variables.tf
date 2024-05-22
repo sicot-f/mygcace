@@ -10,3 +10,7 @@ variable "zone" {
   description = "The zone host the network in"
 }
 
+variable "bucket_name" {
+  description = "The bucket host the network in"
+}
+

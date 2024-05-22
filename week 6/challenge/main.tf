@@ -25,6 +25,7 @@ provider "google" {
 # module "gcs-state-storage" {
 #   source = "./modules/storage"
 # 
+#   bucket_name = var.bucketname
 #   zone       = var.zone
 #   project_id = var.project_id
 #   region     = var.region
@@ -42,7 +43,7 @@ provider "google" {
 #   source       = "terraform-google-modules/network/google"
 #   version      = "6.0.0"
 #   project_id   = var.project_id # Replace this with your project ID
-#   network_name = "tf-vpc-621585"
+#   network_name = var.vpcname
 #   routing_mode = "GLOBAL"
 # 
 #   subnets = [
@@ -61,7 +62,7 @@ provider "google" {
 
 # 7
 #resource "google_compute_firewall" "default" {
-#  name    = "test-firewall"
+#  name    = var.firewall_name
 #  network = "projects/PROJECT_ID/global/networks/VPC Name"
 #  source_ranges = "0.0.0.0/0"
 #
