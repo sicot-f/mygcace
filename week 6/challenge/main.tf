@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      version = "3.5.0"
+      version = "4.53.0"
     }
   }
 }
@@ -14,18 +14,17 @@ provider "google" {
   zone    = var.zone
 }
 
-# module "gcs-instances" {
-#   source = "./modules/instances"
-# 
-#   zone       = var.zone
-#   project_id = var.project_id
-#   region     = var.region
-# }
+#module "gcs-instances" {
+#  source = "./modules/instances"
+#
+#  zone       = var.zone
+#  project_id = var.project_id
+#  region     = var.region
+#}
 
-# module "gcs-static-website-bucket" {
+# module "gcs-state-storage" {
 #   source = "./modules/storage"
 # 
-#   name       = ""
 #   zone       = var.zone
 #   project_id = var.project_id
 #   region     = var.region
@@ -33,33 +32,33 @@ provider "google" {
 # 
 # terraform {
 #   backend "gcs" {
-#     bucket  = "# REPLACE WITH YOUR BUCKET NAME"
+#     bucket  = "tf-bucket-748916"
 #     prefix  = "terraform/state"
 #   }
 # }
 
 # 6
-#module "test-vpc-module" {
-#  source       = "terraform-google-modules/network/google"
-#  version      = "6.0.0"
-#  project_id   = var.project_id # Replace this with your project ID
-#  network_name = ""
-#  routing_mode = "GLOBAL"
-#
-#  subnets = [
-#    {
-#      subnet_name   = "subnet-01"
-#      subnet_ip     = "10.10.10.0/24"
-#      subnet_region         = var.region
-#    },
-#    {
-#      subnet_name           = "subnet-02"
-#      subnet_ip             = "10.10.20.0/24"
-#      subnet_region         = var.Reion
-#    },
-#  ]
-#}
-#
+# module "test-vpc-module" {
+#   source       = "terraform-google-modules/network/google"
+#   version      = "6.0.0"
+#   project_id   = var.project_id # Replace this with your project ID
+#   network_name = "tf-vpc-621585"
+#   routing_mode = "GLOBAL"
+# 
+#   subnets = [
+#     {
+#       subnet_name   = "subnet-01"
+#       subnet_ip     = "10.10.10.0/24"
+#       subnet_region         = var.region
+#     },
+#     {
+#       subnet_name           = "subnet-02"
+#       subnet_ip             = "10.10.20.0/24"
+#       subnet_region         = var.region
+#     },
+#   ]
+# }
+
 # 7
 #resource "google_compute_firewall" "default" {
 #  name    = "test-firewall"
